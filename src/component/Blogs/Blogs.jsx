@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Blog from "../Blog/Blog";
+import PropTypes from 'prop-types';
 
-
-const Blogs = () => {
+//8. set handleAddToBookmar props to set the bookmarks into blogs function as a property
+const Blogs = ({handleAddToBookmark, handlemarkAsRead}) => {
     //1. load data from json
     const [blogs, setBlogs] = useState([]);
     //2. data load er jonno 
@@ -16,10 +17,15 @@ const Blogs = () => {
             <h1 className="text-4xl">Blogs: {blogs.length}</h1>
             {/* 5. dekhanor jonno dynamic */}
             {
-                blogs.map(blog => <Blog key={blog.id} blog={blog}></Blog>)
+                blogs.map(blog => <Blog key={blog.id} blog={blog} handleAddToBookmark={handleAddToBookmark} handlemarkAsRead={handlemarkAsRead}></Blog>)
             }
         </div>
     );
+}
+
+Blogs.propTypes={
+    handleAddToBookmark: PropTypes.func,
+    handlemarkAsRead: PropTypes.func
 }
 
 export default Blogs;
