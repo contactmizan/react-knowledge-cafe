@@ -3,9 +3,9 @@ import { FaBookmark } from 'react-icons/fa';
 //9 receive handleAddToBookmark
 const Blog = ({ blog, handleAddToBookmark, handlemarkAsRead }) => {
     //4. destructure
-    const { title, cover, author, posted_date, author_img, reading_time, hashtags } = blog;
+    const {id, title, cover, author, posted_date, author_img, reading_time, hashtags } = blog;
     return (
-        <div className='mb-20 border-b-2'>
+        <div className='mb-20 border-b-2 mt-2'>
             <img className='w-full mb-8' src={cover} alt={`Cover picture of the title ${title}`} />
             <div className='flex justify-between mb-4'>
                 <div className='flex gap-6'>
@@ -27,7 +27,7 @@ const Blog = ({ blog, handleAddToBookmark, handlemarkAsRead }) => {
                     hashtags.map((hash, idx) => <span key={idx}> <a>#{hash}</a> </span>)
                 }
             </p>
-            <button onClick={() => handlemarkAsRead(reading_time)} className='mb-4 text-purple-800 font-bold underline'>Mark as read</button>
+            <button onClick={() => handlemarkAsRead(id, reading_time)} className='mb-4 text-purple-800 font-bold underline'>Mark as read</button>
         </div>
     );
 }
